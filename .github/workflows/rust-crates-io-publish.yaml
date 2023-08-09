@@ -6,6 +6,6 @@ on:
 
 jobs:
   publish:
-    uses: darbiadev/.github/.github/workflows/rust-crates-io-publish.yaml@0c105e4ec7fd13ac581ccd1ea3fe5f25091ddc14
+    uses: darbiadev/.github/.github/workflows/rust-crates-io-publish.yaml@5f704c2b5aa4a48d52e37e40ba540b15620e45b5
     secrets:
       CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
