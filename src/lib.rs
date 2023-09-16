@@ -22,9 +22,8 @@
 pub fn char_replace(text: &str) -> String {
     // TODO: We should probably account for capitalization here via a regex or something.
 
-    text.replace("r", "w")
-        .replace("l", "w")
-        .replace("n", "ny")
+    text.replace(['r', 'l'], "w")
+        .replace('n', "ny")
         .replace("ove", "uv")
 }
 
