@@ -8,11 +8,11 @@ on:
 
 jobs:
   lint:
-    uses: darbiadev/.github/.github/workflows/rust-lint.yaml@0c105e4ec7fd13ac581ccd1ea3fe5f25091ddc14
+    uses: darbiadev/.github/.github/workflows/rust-lint.yaml@ee7e2b19d4ccee9495616f6b25bd14600cc13e02 # v1.1.5
 
   clippy:
     needs: lint
-    uses: darbiadev/.github/.github/workflows/rust-clippy.yaml@0c105e4ec7fd13ac581ccd1ea3fe5f25091ddc14
+    uses: darbiadev/.github/.github/workflows/rust-clippy.yaml@ee7e2b19d4ccee9495616f6b25bd14600cc13e02 # v1.1.5
 
   test:
     needs: clippy
@@ -32,7 +32,16 @@ jobs:
             target: "x86_64-pc-windows-msvc",
           }
 
-    uses: darbiadev/.github/.github/workflows/rust-test.yaml@0c105e4ec7fd13ac581ccd1ea3fe5f25091ddc14
+    uses: darbiadev/.github/.github/workflows/rust-test.yaml@ee7e2b19d4ccee9495616f6b25bd14600cc13e02 # v1.1.5
     with:
       os: ${{ matrix.triple.os }}
       target: ${{ matrix.triple.target }}
+
+  docs:
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    uses: darbiadev/.github/.github/workflows/github-pages-rust-doc.yaml@ee7e2b19d4ccee9495616f6b25bd14600cc13e02 # v1.1.5
