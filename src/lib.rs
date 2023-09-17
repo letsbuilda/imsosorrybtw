@@ -19,6 +19,8 @@
 ///
 /// assert_eq!(uwuified, "I'm so sowwy...");
 /// ```
+#[allow(clippy::doc_markdown)]
+#[must_use]
 pub fn char_replace(text: &str) -> String {
     // TODO: We should probably account for capitalization here via a regex or something.
 
@@ -30,6 +32,8 @@ pub fn char_replace(text: &str) -> String {
 /// UwUify a string. This basically applies every other function in this crate to a string in order:
 ///
 /// - `char_replace`
+#[allow(clippy::doc_markdown)]
+#[must_use]
 pub fn uwuify(text: &str) -> String {
     char_replace(text)
 }
