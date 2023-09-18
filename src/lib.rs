@@ -31,9 +31,11 @@ pub fn char_replace(text: &str) -> String {
 
 /// UwUify a string. This basically applies every other function in this crate to a string in order:
 ///
+/// - `to_lowercase` (standard string method, not in crate)
 /// - `char_replace`
 #[allow(clippy::doc_markdown)]
 #[must_use]
 pub fn uwuify(text: &str) -> String {
-    char_replace(text)
+    let text = text.to_lowercase();
+    char_replace(&text)
 }
