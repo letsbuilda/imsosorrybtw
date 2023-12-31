@@ -1,6 +1,6 @@
 //! I'm so sorry...
 
-const WORD_REPLACE: [(&'static str, &'static str); 9] = [
+const WORD_REPLACE: [(&str, &str); 9] = [
     ("small", "smol"),
     ("cute", "kawaii~"),
     ("fluff", "floof"),
@@ -28,6 +28,8 @@ const WORD_REPLACE: [(&'static str, &'static str); 9] = [
 ///
 /// assert_eq!(uwuified, "smol dogs");
 /// ```
+#[allow(clippy::doc_markdown)]
+#[must_use]
 pub fn replace_words(text: &str) -> String {
     WORD_REPLACE
         .iter()
