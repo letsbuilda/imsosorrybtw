@@ -1,13 +1,49 @@
 //! I'm so sorry...
 
+const WORD_REPLACE: [(&str, &str); 9] = [
+    ("small", "smol"),
+    ("cute", "kawaii~"),
+    ("fluff", "floof"),
+    ("love", "luv"),
+    ("stupid", "baka"),
+    ("idiot", "baka"),
+    ("what", "nani"),
+    ("meow", "nya~"),
+    ("roar", "rawrr~"),
+];
+
+/// Replace certain words with uwuified equivalents, such as:
+///
+/// - `small` -> `smol`
+/// - `cute` -> `kawaii~`
+/// - `fluff` -> `floof`
+/// - ...
+///
+/// # Example:
+///
+/// ```
+/// use imsosorrybtw::replace_words;
+/// let text = "small dogs";
+/// let uwuified = replace_words(text);
+///
+/// assert_eq!(uwuified, "smol dogs");
+/// ```
+#[allow(clippy::doc_markdown)]
+#[must_use]
+pub fn replace_words(text: &str) -> String {
+    WORD_REPLACE
+        .iter()
+        .fold(text.to_string(), |acc, (word, replacement)| {
+            acc.replace(word, replacement)
+        })
+}
+
 /// Replace certain characters with their UwU equivalents:
 ///
 /// - `r` -> `w`
 /// - `l` -> `w`
 /// - `n` -> `ny`
 /// - `ove` -> `uv`
-///
-/// This will **NOT** account for capitalization.
 ///
 /// # Example
 ///
@@ -32,10 +68,14 @@ pub fn char_replace(text: &str) -> String {
 /// UwUify a string. This basically turns the text lowercase and applies every other function in
 /// this crate to a string in order:
 ///
+/// - `replace_words`
 /// - `char_replace`
 #[allow(clippy::doc_markdown)]
 #[must_use]
 pub fn uwuify(text: &str) -> String {
-    let text = text.to_lowercase();
-    char_replace(&text)
+    let mut text = text.to_lowercase();
+    text = replace_words(&text);
+    text = char_replace(&text);
+
+    text
 }
